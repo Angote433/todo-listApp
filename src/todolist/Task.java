@@ -29,4 +29,9 @@ public class Task {
 
     public void setComplete(boolean isComplete){this.isComplete = isComplete;}
     public boolean isComplete(){return isComplete;}
+
+    public String displayInfo(){
+        return "Title: "+ getName() + "\nDescription: "+ getDescription() + "\nDate: "+ getDate()
+                + "\nStatus: "+ isComplete();
+    }
 }
