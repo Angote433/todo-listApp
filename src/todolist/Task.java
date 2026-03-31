@@ -1,6 +1,7 @@
 package todolist;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 public class Task {
     /*
@@ -8,10 +9,10 @@ public class Task {
      */
     private String name;
     private String description;
-    private LocalDateTime date;
+    private LocalDate date;
     boolean isComplete;
 
-    public Task(String name,String description,LocalDateTime date){
+    public Task(String name,String description,LocalDate date){
         this.name = name;
         this.description = description;
         this.date = date;
@@ -24,8 +25,8 @@ public class Task {
     public void setDescription(String description){this.description = description;}
     public String  getDescription(){return description;}
 
-    public void setDate(LocalDateTime date){this.date = date;}
-    public LocalDateTime getDate(){return date;}
+    public void setDate(LocalDate date){this.date = date;}
+    public LocalDate getDate(){return date;}
 
     public void setComplete(boolean isComplete){this.isComplete = isComplete;}
     public boolean isComplete(){return isComplete;}

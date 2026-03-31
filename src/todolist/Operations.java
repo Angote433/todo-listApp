@@ -1,5 +1,6 @@
 package todolist;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class Operations {
         tasks = new ArrayList<>();
     }
 
-    public void createTask(String name, String description, LocalDateTime dateDone){
+    public void createTask(String name, String description, LocalDate dateDone){
         //create a task
         Task newTask = new Task(name,description,dateDone);
         tasks.add(newTask);
