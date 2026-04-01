@@ -1,14 +1,18 @@
 package todolist;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     static Scanner input = new Scanner(System.in);
+    private static Operations op = new Operations();
+    private static List<Task>tasks = op.viewAllTasks();
     static void main() {
 
         displayMenu();
@@ -52,6 +56,8 @@ public class Main {
     }
 
     public static void addTaskMenu(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         System.out.println("=========================");
         System.out.println("   ADD TASK");
         System.out.println("=========================");
@@ -65,7 +71,9 @@ public class Main {
         String date = input.nextLine();
 
         System.out.println("Press enter to add user");
-        input.next();
+        op.createTask(name,description,convertToDate(date));
+        System.out.println("Task added successfully!! ");
+
 
     }
     public static LocalDate convertToDate(String dateInput){
@@ -84,11 +92,13 @@ public class Main {
         System.out.println("2.Complete tasks only");
         System.out.println("3.Incomplete tasks only");
         System.out.println("4.Back to main menu.");
-        System.out.println("Enter choice: ");
+        System.out.print("Enter choice: ");
         int choice = input.nextInt();
          switch(choice){
              case 1:
-                 System.out.println("To be added");
+                 for(Task task :tasks){
+                     System.out.println(task.displayInfo());
+                 }
                  break;
              case 2:
                  System.out.println("Not yet implemented");
@@ -106,6 +116,22 @@ public class Main {
     }
 
     public static void markTaskComplete(){
+        //List all tasks
+        //ask user to choose task
+        //check if task is already complete and sedn error message if complete
+        //if not complete set it to complete and return success
+
+        List<Task>taskList = op.viewAllTasks();
+        for(int i = 0;i < taskList.size();i++) {
+
+            Task task = taskList.get(i);
+            String taskView = (i + 1) +"." + task.getName() + " | "+task.getDescription()+" | "+ task.getDate();
+            System.out.println(taskView);
+        }
+        
+
+
+
 
     }
 

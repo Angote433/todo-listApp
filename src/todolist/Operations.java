@@ -25,13 +25,15 @@ public class Operations {
     public void markComplete(Task task){
         task.setComplete(true);
     }
-    public void viewAllTasks(){
-        for(Task task: tasks){
-            System.out.println(task.displayInfo());
-            System.out.println("--------------------------------------------");
-            System.out.println();
+    public List<Task>viewAllTasks(){
+        if(tasks.isEmpty()){
+            return null;
         }
+        return tasks;
     }
+
+    //load all tasks
+
 
     public void setComplete(Task task){
         task.setComplete(true);
