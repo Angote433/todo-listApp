@@ -12,7 +12,6 @@ public class Main {
 
     static Scanner input = new Scanner(System.in);
     private static Operations op = new Operations();
-    private static List<Task>tasks = op.viewAllTasks();
     static void main() {
 
         displayMenu();
@@ -44,7 +43,8 @@ public class Main {
                     viewTaskMenu();
                     break;
                 case 3:
-                    markTaskComplete();
+                   // markTaskComplete();
+                    System.out.println("Coming soon");
                     break;
                 case 4:
                     System.out.println("Thank you for visiting us,,Goodbye");
@@ -95,15 +95,13 @@ public class Main {
         int choice = input.nextInt();
          switch(choice){
              case 1:
-                 for(Task task :tasks){
-                     System.out.println(task.displayInfo());
-                 }
+                 op.viewAllTasks();
                  break;
              case 2:
-                 System.out.println("Not yet implemented");
+                 op.viewCompleteTasks();
                  break;
              case 3:
-                 System.out.println("Not yet implemented");
+                 op.viewIncompleteTasks();
                  break;
              case 4:
                  displayMenu();
@@ -114,19 +112,19 @@ public class Main {
          }
     }
 
-    public static void markTaskComplete(){
-        //List all tasks
-        //ask user to choose task
-        //check if task is already complete and sedn error message if complete
-        //if not complete set it to complete and return success
-
-        List<Task>taskList = op.viewAllTasks();
-        for(int i = 0;i < taskList.size();i++) {
-
-            Task task = taskList.get(i);
-            String taskView = (i + 1) +"." + task.getName() + " | "+task.getDescription()+" | "+ task.getDate();
-            System.out.println(taskView);
-        }
+//    public static void markTaskComplete(){
+//        //List all tasks
+//        //ask user to choose task
+//        //check if task is already complete and sedn error message if complete
+//        //if not complete set it to complete and return success
+//
+//        List<Task>taskList = op.viewAllTasks();
+//        for(int i = 0;i < taskList.size();i++) {
+//
+//            Task task = taskList.get(i);
+//            String taskView = (i + 1) +"." + task.getName() + " | "+task.getDescription()+" | "+ task.getDate();
+//            System.out.println(taskView);
+//        }
         
 
 
@@ -134,4 +132,4 @@ public class Main {
 
     }
 
-}
+

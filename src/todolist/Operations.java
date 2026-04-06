@@ -25,11 +25,47 @@ public class Operations {
     public void markComplete(Task task){
         task.setComplete(true);
     }
-    public List<Task>viewAllTasks(){
+    public void viewAllTasks(){
+        if(tasks.isEmpty()){
+            System.out.println("No tasks to display");
+        }
+        for(Task task : tasks){
+            System.out.println(task.getName() + "||"+task.getDescription()+"||"+task.getDate() + "||"+ task.isComplete());
+        }
+    }
+
+    public void viewCompleteTasks(){
+        if(tasks.isEmpty()){
+            System.out.println("No tasks present");
+        }
+        List<Task>completeTasks = new ArrayList<>();
+        //search for the task where status = true
+        for(Task task : tasks){
+            if(task.isComplete()){
+                completeTasks.add(task);
+            }
+        }
+        //display
+        if(completeTasks.isEmpty()){
+            System.out.println("No completed tasks");
+        }
+        for(Task task:completeTasks){
+            System.out.println(task.getName() + "||"+task.getDescription()+"||"+task.getDate() + "||"+ task.isComplete());
+        }
+    }
+
+    public List<Task>viewIncompleteTasks(){
         if(tasks.isEmpty()){
             return null;
         }
-        return tasks;
+        List<Task>incompleteTasks = new ArrayList<>();
+
+        for(Task task:tasks){
+            if(!task.isComplete()){
+               incompleteTasks.add(task);
+            }
+        }
+        return incompleteTasks;
     }
 
     //load all tasks
