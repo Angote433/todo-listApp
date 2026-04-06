@@ -18,6 +18,13 @@ public class Task {
         this.date = date;
         this.isComplete = false;
     }
+    //loading constructor
+    public Task(String name,String description,LocalDate date,boolean isComplete){
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        this.isComplete = isComplete;
+    }
 
     public void setName(String name){this.name = name;}
     public String getName(){return name;}

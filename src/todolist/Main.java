@@ -34,6 +34,7 @@ public class Main {
             System.out.println("4.Exit");
             System.out.print("Please select an option: ");
             int choice = input.nextInt();
+            input.nextLine();
 
             switch (choice) {
                 case 1:
@@ -47,6 +48,8 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Thank you for visiting us,,Goodbye");
+                    state = false;
+                    break;
 
                 default:
                     System.out.println("Please enter a valid input. ");
@@ -56,24 +59,20 @@ public class Main {
     }
 
     public static void addTaskMenu(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
         System.out.println("=========================");
         System.out.println("   ADD TASK");
         System.out.println("=========================");
 
         System.out.print("Name: ");
         String name = input.nextLine();
-        input.nextLine();
         System.out.print("Description: ");
         String description = input.nextLine();
+        input.nextLine();
         System.out.print("Date(use this format dd/month/year): ");
-        String date = input.nextLine();
+        String date = input.next();
 
-        System.out.println("Press enter to add user");
+        System.out.println("Press enter to add task");
         op.createTask(name,description,convertToDate(date));
-        System.out.println("Task added successfully!! ");
-
 
     }
     public static LocalDate convertToDate(String dateInput){

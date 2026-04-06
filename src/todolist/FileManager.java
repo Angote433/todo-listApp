@@ -35,7 +35,7 @@ public class FileManager {
                 String []parts = line.split(",");
                 if(parts.length == 4){
 
-                    LocalDate date  = LocalDate.parse(parts[3]);
+                    LocalDate date  = LocalDate.parse(parts[2]);
                     boolean isComplete = Boolean.parseBoolean(parts[3]);
 
                     Task task = new Task(parts[0],parts[1],date,isComplete);
