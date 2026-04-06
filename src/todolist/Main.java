@@ -13,7 +13,6 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     private static Operations op = new Operations();
     static void main() {
-
         displayMenu();
     }
 
@@ -43,8 +42,7 @@ public class Main {
                     viewTaskMenu();
                     break;
                 case 3:
-                   // markTaskComplete();
-                    System.out.println("Coming soon");
+                   markTaskComplete();
                     break;
                 case 4:
                     System.out.println("Thank you for visiting us,,Goodbye");
@@ -101,7 +99,13 @@ public class Main {
                  op.viewCompleteTasks();
                  break;
              case 3:
-                 op.viewIncompleteTasks();
+                 List<Task>incompleteTasks = op.viewIncompleteTasks();
+                 if(incompleteTasks.isEmpty()){
+                     System.out.println("No incomplete tasks");
+                 }
+                 for(Task task : incompleteTasks){
+                     System.out.println(task.getName() + "||"+task.getDescription()+"||"+task.getDate() + "||"+ task.isComplete());
+                 }
                  break;
              case 4:
                  displayMenu();
@@ -112,19 +116,41 @@ public class Main {
          }
     }
 
-//    public static void markTaskComplete(){
-//        //List all tasks
-//        //ask user to choose task
-//        //check if task is already complete and sedn error message if complete
-//        //if not complete set it to complete and return success
-//
-//        List<Task>taskList = op.viewAllTasks();
-//        for(int i = 0;i < taskList.size();i++) {
-//
-//            Task task = taskList.get(i);
-//            String taskView = (i + 1) +"." + task.getName() + " | "+task.getDescription()+" | "+ task.getDate();
-//            System.out.println(taskView);
-//        }
+    public static void markTaskComplete(){
+        //List all incomplete tasks
+        //choose a task to be marked complete
+        //ask y or n to mark complete,,
+        //if y,task get updated
+        //if n task remains incomplete
+
+        int taskmapper = 0;
+        List<Task>incompleteTasks = op.viewIncompleteTasks();
+        System.out.println("=======================");
+        System.out.println("   INCOMPLETE TASKS    ");
+        System.out.println("=======================");
+        for(int i = 0;i < incompleteTasks.size();i++){
+            taskmapper = i + 1;
+            System.out.println( taskmapper + ". " +incompleteTasks.get(i).getName() + " || "
+                    + incompleteTasks.get(i).isComplete());
+        }
+        System.out.println("========================");
+        System.out.println();
+
+        System.out.print("Select a task using visible values(1,2,3 etc: ");
+        int choice = input.nextInt();
+
+        if(choice > taskmapper){
+            System.out.println("Enter a valid choice");
+        }
+
+        Task chosenTask = incompleteTasks.get(choice);
+        //set to complete
+        op.markComplete(chosenTask);
+
+
+    }
+
+
         
 
 

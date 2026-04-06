@@ -24,6 +24,7 @@ public class Operations {
     }
     public void markComplete(Task task){
         task.setComplete(true);
+
     }
     public void viewAllTasks(){
         if(tasks.isEmpty()){
@@ -54,7 +55,7 @@ public class Operations {
         }
     }
 
-    public List<Task>viewIncompleteTasks(){
+    public List<Task> viewIncompleteTasks(){
         if(tasks.isEmpty()){
             return null;
         }
@@ -65,6 +66,7 @@ public class Operations {
                incompleteTasks.add(task);
             }
         }
+
         return incompleteTasks;
     }
 
